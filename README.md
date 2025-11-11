@@ -9,9 +9,11 @@ def insert():
     index = hash_func(key)
 
     while hash_table[index] is not None:
-        index = (index + 1) % SIZE  
+        index = (index + 1) % SIZE
+    
     hash_table[index] = key
     print("Key inserted at index", index)
+
 
 def search():
     key = int(input("Enter key to search: "))
@@ -22,10 +24,14 @@ def search():
         if hash_table[index] == key:
             print("Key found at index", index)
             return
+        
         index = (index + 1) % SIZE
-        if index == start:
+        
+        if index == start:  # Came full circle
             break
+
     print("Key not found!")
+
 
 def delete():
     key = int(input("Enter key to delete: "))
@@ -37,10 +43,14 @@ def delete():
             hash_table[index] = None
             print("Key deleted from index", index)
             return
+        
         index = (index + 1) % SIZE
+        
         if index == start:
             break
+
     print("Key not found!")
+
 
 def display():
     print("\nHash Table:")
@@ -49,7 +59,7 @@ def display():
     print()
 
 while True:
-    print("\n1.Insert  2.Search  3.Delete  4.Display  5.Exit")
+    print("\n1.Insert 2.Search 3.Delete 4.Display 5.Exit")
     ch = int(input("Enter your choice: "))
 
     if ch == 1:
